@@ -1,8 +1,109 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@font-face {
+  font-family: 'Roboto';
+  src: url('/Fonts/Roboto-Regular.ttf');
 }
 
-a {
-  color: #00B7FF;
+@font-face {
+font-family: 'SansationLight'; 
+src: url('/Fonts/Sansation_Light.ttf'); 
+}
+
+html {
+  background: url('/images/bg.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  top: 0;
+  left: 0;
+}
+
+
+.content {
+  background-color: rgba(94, 100, 114, 0.3);
+  margin: 0 auto;
+  width: 27em;
+  height: 31em;
+  margin-top: 2em;
+  border: 1px solid rgb(123, 122, 139);
+  border-radius: 45px;
+}
+
+.content-title {
+  color: white;
+  font-size: 2.7em;
+  font-family: 'SansationLight';
+  text-align: center;
+  background-color: #6a7083;
+  opacity: 0.7;
+  padding-top: 0.7em;
+  padding-bottom: 0.7em;
+  border-top: 1px solid rgb(85, 85, 85);
+  border-radius: 45px 45px 0px 0px;
+}
+
+.form-label {
+  border: 0px solid white;
+  background: rgba(0,0,0,0);
+	height: 2em;
+	width: 100%;
+  margin-top: 5%;
+  font-size: 1.45em;
+  font-family: 'SansationLight';
+  color: white;
+  border: none;
+  border-bottom: 1px solid #CCC;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.form-label:focus {
+  outline: rgb(91, 192, 113);
+  border: 0 solid rgb(91, 192, 113);
+  border-bottom: 1px solid #CCC;
+  color: white;
+}
+
+.content form input::placeholder {
+  color: white;
+  opacity: 0.7;
+}
+
+.content form a {
+  text-decoration: none;
+  color: white;
+  margin-top: 2em;
+  font-family: 'SansationLight';
+  font-style: italic;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.sign-up, .log-in {
+  float: left;
+  margin-left: 5em;
+}
+.forgot-password {
+  float: right;
+  margin-right: 5em;
+}
+
+.form-submit {
+  border: 0px solid black;
+  border-radius: 10px;  
+  background-color: #565c69;
+  display: block;
+  padding: 0.7em 3.5em 0.7em 3.5em;
+  font-size: 1.45em;
+	font-family: 'Roboto';
+  color: white;
+  margin: 3.5em auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+.info {
+  display: relative;
+  margin: 0 auto;
+  float: right;
 }

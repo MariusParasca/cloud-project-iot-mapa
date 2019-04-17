@@ -1,5 +1,19 @@
-extends layout
+doctype html
+html(lang='en')
+  include common/head.pug
+  +head(title)
+  body
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+    .content
+      .content-title IOT LOGIN
+      form(action='/', method='POST')
+        input(name="email", placeholder="Email ID").form-label
+        input(name="password" type="password" placeholder="Password").form-label
 
-block content
-  h1= title
-  p Welcome to #{title}
+        a(onclick=`onclick_sign_up()`).sign-up Sign up
+        a(onclick=`onclick_forgot_password()`).forgot-password Forgot password?
+        input(type="submit", value="LOGIN").form-submit 
+        .info Back
+    include common/footer.pug
+    +footer('')
