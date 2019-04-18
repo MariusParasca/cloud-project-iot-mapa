@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'Roboto';
-  src: url('/Fonts/Roboto-Regular.ttf');
+  src: url('/fonts/Roboto-Regular.ttf');
 }
 
 @font-face {
 font-family: 'SansationLight'; 
-src: url('/Fonts/Sansation_Light.ttf'); 
+src: url('/fonts/Sansation_Light.ttf'); 
 }
 
 html {
@@ -22,11 +22,17 @@ html {
 .content {
   background-color: rgba(94, 100, 114, 0.3);
   margin: 0 auto;
-  width: 27em;
+  width: 25em;
   height: 31em;
   margin-top: 2em;
   border: 1px solid rgb(123, 122, 139);
   border-radius: 45px;
+  transition: 0.5s;
+}
+
+.content:hover {
+  width: 23em;
+  transition: 0.5s;
 }
 
 .content-title {
@@ -79,6 +85,10 @@ html {
   cursor: pointer;
 }
 
+.content form a:hover {
+  text-decoration: underline;
+}
+
 .sign-up, .log-in {
   float: left;
   margin-left: 5em;
@@ -92,18 +102,32 @@ html {
   border: 0px solid black;
   border-radius: 10px;  
   background-color: #565c69;
-  display: block;
   padding: 0.7em 3.5em 0.7em 3.5em;
   font-size: 1.45em;
 	font-family: 'Roboto';
   color: white;
-  margin: 3.5em auto;
-  text-align: center;
+  margin: 0 auto;
+  display: block;
+  margin-top: 2.5em;
   cursor: pointer;
 }
 
+.form-submit:focus {
+  outline: 0px solid #565c69;
+}
+
+.form-submit:hover {
+  background-color: #474c58;
+}
+
 .info {
-  display: relative;
   margin: 0 auto;
-  float: right;
+  margin-top: 1em;
+  font-family: 'SansationLight';
+  font-style: italic;
+  color: white;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: underline;
 }
