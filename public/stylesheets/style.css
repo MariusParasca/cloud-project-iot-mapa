@@ -9,11 +9,7 @@ src: url('/fonts/Sansation_Light.ttf');
 }
 
 html {
-  background: url('/images/bg.png') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background: url('/images/bg.png') center center fixed;
   top: 0;
   left: 0;
 }
@@ -28,6 +24,12 @@ html {
   border: 1px solid rgb(123, 122, 139);
   border-radius: 45px;
   transition: 0.5s;
+}
+
+@media screen and (max-width: 450px) {
+  .content {
+    width: 23em;
+  }
 }
 
 .content:hover {
