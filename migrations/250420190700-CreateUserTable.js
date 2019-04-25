@@ -1,34 +1,35 @@
 'user-strict';
 
 module.exports = {
-    up: (queryInterface, Sequelize) => {
+    up: (queryInterface, DataTypes) => {
         return queryInterface.createTable('Users', {
             id: {
-                type: Sequelize.INTEGER,
+                type: DataTypes.UUID,
+                defaultValue: DataTypes.UUIDV4,
                 allowNull: false,
                 primaryKey: true
             },
             email: {
-                type: Sequelize.STRING,
+                type: DataTypes.STRING,
                 allowNull: false
             },
             password: {
-                type: Sequelize.STRING,
+                type: DataTypes.STRING,
                 allowNull: false
             },
             keyid: {
-                type: Sequelize.INTEGER,
+                type: DataTypes.UUID,
                 allowNull: false
             },
             createdAt: {
-                type: Sequelize.DATE,
+                type: DataTypes.DATE,
                 allowNull: false
             },
             updatedAt: {
-                type: Sequelize.DATE,
+                type: DataTypes.DATE,
                 allowNull: false
             }
         });
     },
-    down: (queryInterface, Sequelize) => { return queryInterface.dropTable('Users'); }
+    down: (queryInterface, DataTypes) => { return queryInterface.dropTable('Users'); }
 }
