@@ -10,16 +10,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-# env_variables:
-  # SQL_USER: root
-  # SQL_PASSWORD: notSafePassword
-  # SQL_DATABASE: tranzactions_database
-  # # e.g. my-awesome-project:us-central1:my-cloud-sql-instance
-  # INSTANCE_CONNECTION_NAME: cloud-week5-235308:europe-west1:tranzactions
-  # GCLOUD_STORAGE_BUCKET: httpdogs-images
-  # GOOGLE_APPLICATION_CREDENTIALS: data.json
-
 # [START gae_quickstart_yaml]
+# env_variables:
+  
 runtime: nodejs10
 # [END gae_quickstart_yaml]
