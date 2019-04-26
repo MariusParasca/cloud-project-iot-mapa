@@ -1,6 +1,37 @@
 const models = require('../models');
 const sha256 = require('sha256');
 
+function sendServerError(err) {
+  this.res.status(500).send();
+}
+
+function createNewUser(req, res) {
+  models.User.create({
+    email: req.body.email,
+    password: sha256(req.body.password),
+    keyid: req.body.key
+  }).then(() => {
+    res.redirect('/');
+  })
+}
+
+function handleUserLogin(user) {
+  if (user && user.length) {
+    this.req.session.email = this.req.body.email;
+    this.res.render('index', { title: 'IOT Automation' });
+  } else {
+    this.res.status(400).send();
+  }
+}
+
+function handleUserRegister(user) {
+  if (user.length == 0) {
+    createNewUser(this.req, this.res);
+  } else {
+    this.res.status(400).send();
+  }
+}
+
 exports.index = function(req, res, next) {
   res.render('index', { title: 'IOT Automation' });
 }
@@ -11,31 +42,19 @@ exports.login = function (req, res, next) {
       email: req.body.email,
       password: sha256(req.body.password)
     }
-  }).then(user => {
-      if (user && user.length) {
-        req.session.email = req.body.email;
-        res.render('index', { title: 'IOT Automation' });
-      } else {
-        res.status(400).send();
-      }
-    }).catch(err => {
-      res.status(500).send();
-    })
+  })
+  .then(handleUserLogin.bind({req: req, res: res}))
+  .catch(sendServerError.bind({res: res}));
 }
 
 exports.register = function(req, res, next) {
-  // Test for existing key
-  models.User.create({
-    email: req.body.email,
-    password: sha256(req.body.password),
-    keyid: req.body.key
-  }).then(user => {
-    console.log("User created!");
-    res.redirect('/');
+  models.User.findAll({
+    where: {
+      keyid: req.body.key
+    }
   })
-  console.log('Email: ', req.body.email);
-  console.log('Password: ', req.body.password);
-  console.log('Key: ', req.body.key);
+  .then(handleUserRegister.bind({ req: req, res: res }))
+  .catch(sendServerError.bind({res: res}));
 }
 
 exports.key = function(req, res, next) {
