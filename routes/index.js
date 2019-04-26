@@ -4,7 +4,8 @@ var router = express.Router();
 let index = require('../controllers/index');
 /* GET home page. */
 router.get('/', index.index);
-router.post('/', index.submit_login);
+router.post('/login', index.login);
+// router.post('/register', index.register);
 
 module.exports = router;
 

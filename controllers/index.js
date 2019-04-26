@@ -2,7 +2,7 @@ const models = require('../models');
 const sha256 = require('sha256');
 
 function sendServerError(err) {
-  this.res.status(500).send();
+  this.res.status(500).send(err);
 }
 
 function createNewUser(req, res) {
@@ -17,8 +17,9 @@ function createNewUser(req, res) {
 
 function handleUserLogin(user) {
   if (user && user.length) {
-    this.req.session.email = this.req.body.email;
-    this.res.render('index', { title: 'IOT Automation' });
+    console.log(this.req.session);
+    this.req.session.user = this.req.body.email;
+    this.res.redirect('/sensors');
   } else {
     this.res.status(400).send();
   }
@@ -44,7 +45,7 @@ exports.login = function (req, res, next) {
     }
   })
   .then(handleUserLogin.bind({req: req, res: res}))
-  .catch(sendServerError.bind({res: res}));
+
 }
 
 exports.register = function(req, res, next) {
