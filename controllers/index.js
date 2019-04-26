@@ -17,7 +17,6 @@ function createNewUser(req, res) {
 
 function handleUserLogin(user) {
   if (user && user.length) {
-    console.log(this.req.session);
     this.req.session.user = this.req.body.email;
     this.res.redirect('/sensors');
   } else {
@@ -34,7 +33,11 @@ function handleUserRegister(user) {
 }
 
 exports.index = function(req, res, next) {
-  res.render('index', { title: 'IOT Automation' });
+  if (req.session.user) {
+    res.redirect('/sensors');
+  } else {
+    res.render('index', { title: 'IOT Automation' });
+  }
 }
 
 exports.login = function (req, res, next) {
