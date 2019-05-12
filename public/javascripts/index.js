@@ -57,7 +57,25 @@ function perform_login() {
 
 function perform_sign_up() {
     console.log("sign up performed");
-    show_info_message("An user with that name already exists.");
+    if(!document.getElementsByName("email")[0].validity.valid)
+        return;
+    $.post('register', {email: $('input[name="email"]').val(), password: $('input[name="password"]').val(), keyid: $('input[name="key"]').val()},
+        function(returnedData) {
+            console.log("works, signup done");
+            //window.location.replace("/");
+        }).fail(function(jqXHR, textStatus, errorThrown){
+            switch(jqXHR.status) {
+                case 400:
+                    show_info_message("User already exists.");
+                    break;
+                case 500:
+                    show_info_message("KEY is invalid.");
+                    break;
+                default:
+                    show_info_message("Unknown error.");
+                    break;
+            }
+        });
 }
 
 function perform_forgot_password() {
