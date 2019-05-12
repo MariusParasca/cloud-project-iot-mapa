@@ -56,13 +56,11 @@ function perform_login() {
 }
 
 function perform_sign_up() {
-    console.log("sign up performed");
     if(!document.getElementsByName("email")[0].validity.valid)
         return;
-    $.post('register', {email: $('input[name="email"]').val(), password: $('input[name="password"]').val(), keyid: $('input[name="key"]').val()},
+    $.post('register', {email: $('input[name="email"]').val(), password: $('input[name="password"]').val(), key: $('input[name="key"]').val()},
         function(returnedData) {
-            console.log("works, signup done");
-            //window.location.replace("/");
+            show_info_message("Succesfully registered!");
         }).fail(function(jqXHR, textStatus, errorThrown){
             switch(jqXHR.status) {
                 case 400:
