@@ -45,8 +45,12 @@ function onclick_back_forgot_password() {
 }
 
 function perform_login() {
-    console.log("login performed");
-    show_info_message("Password is incorrect!");
+    $.post('login', {email: $('input[name="email"]').val(), password: $('input[name="password"]').val()},
+        function(returnedData) {
+            window.location.replace("sensors");
+        }).fail(function(){
+            show_info_message("Login failed!");
+        });
 }
 
 function perform_sign_up() {
@@ -60,5 +64,7 @@ function perform_forgot_password() {
 
 function show_info_message(txt) {
     $('.info').remove();
-    $('.form-submit').after('<div class="info">' + txt + '</div>');
+    setTimeout(function(){
+        $('.form-submit').after('<div class="info">' + txt + '</div>');
+    }, 100);
 }
