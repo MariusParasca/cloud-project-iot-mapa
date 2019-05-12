@@ -45,6 +45,8 @@ function onclick_back_forgot_password() {
 }
 
 function perform_login() {
+    if(!document.getElementsByName("email")[0].validity.valid)
+        return;
     $.post('login', {email: $('input[name="email"]').val(), password: $('input[name="password"]').val()},
         function(returnedData) {
             window.location.replace("sensors");

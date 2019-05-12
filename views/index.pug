@@ -8,7 +8,7 @@ html(lang='en')
     .content
       .content-title IOT LOGIN
       form(action="/", onsubmit="return false", method='POST')
-        input(name="email", placeholder="Email ID").form-label
+        input(name="email", type="email" placeholder="Email ID").form-label
         input(name="password" type="password" placeholder="Password").form-label
 
         a(onclick=`onclick_sign_up()`).sign-up Sign up
