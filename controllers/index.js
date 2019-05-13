@@ -26,7 +26,19 @@ function handleUserLogin(user) {
 
 function handleUserRegister(user) {
   if (user.length == 0) {
-    createNewUser(this.req, this.res);
+    models.Key.findAll({
+      where: {
+        key: req.body.key
+      }
+    })
+      .then(key => {
+        if(key.length == 0) {
+          this.res.status(400).send();
+        } else {
+          createNewUser(this.req, this.res);
+        } 
+      })
+      .catch(sendServerError.bind({ res: res }));  
   } else {
     this.res.status(400).send();
   }
