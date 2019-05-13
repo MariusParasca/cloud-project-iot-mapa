@@ -63,6 +63,11 @@ exports.login = function (req, res, next) {
 
 }
 
+exports.logout = function (req, res, next) {
+  req.session.destroy();
+  res.redirect('/');
+}
+
 exports.register = function(req, res, next) {
   models.User.findAll({
     where: {
