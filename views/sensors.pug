@@ -7,5 +7,7 @@ html(lang='en')
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
     .content
       .content-title IOT SENSORS
+      a(onclick=`onclick_logout()`).sign-up Logout(click me)
     include common/footer.pug
+    script(src="/javascripts/sensors.js")
     +footer('')

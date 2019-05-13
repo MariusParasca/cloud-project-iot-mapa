@@ -5,3 +5,7 @@ exports.index = function(req, res, next) {
     res.status(401).send();
   }
 }
+
+exports.logout = function(req, res, next) {
+  res.status(200).send();
+}
