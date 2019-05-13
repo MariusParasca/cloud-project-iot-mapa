@@ -50,7 +50,7 @@ function perform_login() {
     $.post('login', {email: $('input[name="email"]').val(), password: $('input[name="password"]').val()},
         function(returnedData) {
             $('body').replaceWith(returnedData);
-            //window.location.replace("sensors");
+            window.history.pushState("string", "sensors", "/sensors");
         }).fail(function(){
             show_info_message("Login failed!");
         });
