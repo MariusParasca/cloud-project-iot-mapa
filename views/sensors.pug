@@ -7,7 +7,25 @@ html(lang='en')
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
     .content
       .content-title IOT SENSORS
-      a(onclick=`onclick_logout()`).sign-up Logout(click me)
+      .sensors-container
+        .sensor1
+          .sensor-name Temperature
+          .sensor-img-box
+            img(src="/images/temperature.png", alt="Temperature")
+        .sensor2
+          .sensor-name Umidity
+          .sensor-img-box
+            img(src="/images/umidity.png", alt="Umidity")
+        .sensor3
+          .sensor-name Proximity
+          .sensor-img-box
+            img(src="images/proximity.png", alt="Proximity")
+        .sensor4
+          .sensor-name Relay
+          .sensor-img-box
+            img(src="/images/relay.png", alt="Relay")
+      .log-out
+        a(onclick=`onclick_logout()`) Logout
     include common/footer.pug
     script(src="/javascripts/sensors.js")
     +footer('')

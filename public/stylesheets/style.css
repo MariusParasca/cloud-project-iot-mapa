@@ -16,6 +16,7 @@ html {
 
 
 .content {
+  position: relative;
   background-color: rgba(94, 100, 114, 0.3);
   margin: 0 auto;
   width: 25em;
@@ -132,4 +133,58 @@ html {
   text-align: center;
   cursor: pointer;
   text-decoration: underline;
+}
+
+.sensors-container {
+  display: grid;
+  margin-top: 2.5em;
+  margin-right: 1.25em;
+  margin-left: 1.25em;
+  grid-gap: 1em;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.sensor-name {
+  color: white;
+  font-family: 'SansationLight';
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+.sensor-img-box {
+  width: 50%;
+  float: left;
+}
+
+.sensor-info {
+  width: 50%;
+  float: right;
+}
+
+img {
+  width: 4vw;
+  height: 4vw;
+}
+
+.log-out {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-family: 'Roboto';
+  bottom: 0;
+  margin-bottom: 1.75em;
+}
+
+.log-out a {
+  cursor: pointer;
+  border-radius: 10px;  
+  background-color: #565c69;
+  padding: 0.7em 1em 0.7em 1em;
+}
+
+.log-out a:hover {
+  background-color: #474c58;
 }
