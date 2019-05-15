@@ -7,17 +7,23 @@ module.exports = {
     "port": 3307
   },
   "test": {
+    "dialectOptions": {
+      "socketPath": '/cloudsql/cloud-project-iot-mapa:europe-west1:iot-automation',
+    },
     "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "password": "iot-automation",
+    "database": "iot_db",
+    "dialect": "mysql",
+    "port": 3306
   },
   "production": {
+    "dialectOptions": {
+      "socketPath": '/cloudsql/cloud-project-iot-mapa:europe-west1:iot-automation',
+    },
     "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "password": "iot-automation",
+    "database": "iot_db",
+    "dialect": "mysql",
+    "port": 3306
   }
 }

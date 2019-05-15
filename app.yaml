@@ -13,6 +13,7 @@
 # [START gae_quickstart_yaml]
 env_variables:
   SESSION_KEY: complicat12340
+  PORT: 80
   
 runtime: nodejs10
 # [END gae_quickstart_yaml]
