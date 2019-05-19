@@ -144,7 +144,7 @@ html {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.sensor-name {
+.sensor-name, #p-sensor-name {
   color: white;
   font-family: 'SansationLight';
   font-weight: bold;
@@ -178,13 +178,83 @@ img {
   margin-bottom: 1.75em;
 }
 
+.log-out {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 0;
+  margin-bottom: 1.75em;
+}
+
 .log-out a {
+  text-decoration: none;
+  color: white;
+  font-family: 'SansationLight';
+  font-size: 0.8em;
+  font-style: italic;
   cursor: pointer;
-  border-radius: 10px;  
-  background-color: #565c69;
-  padding: 0.7em 1em 0.7em 1em;
 }
 
 .log-out a:hover {
+  text-decoration: underline;
+}
+
+/* Dropdown menu for Proximity sensor */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin-top: 0.7em;
+}
+
+.dropbtn {
+  display: inline-flex;
+  background-color: #565c69;
+  color: white;
+  padding: 0.5em 2em 0.5em 2em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dropbtn-txt {
+  font-family: 'SansationLight';
+  font-size: small;
+}
+
+.dropbtn-img {
+  margin-left: 1em;
+}
+
+.dropdown-content {
+  position: absolute;
+  display: none;
+  left: 50%;
+  right: auto;
+  transform: translate(-50%, 0);
+  background-color:  #565c69;
+  border-radius: 5px;
+}
+
+.dropdown-content a {
+  text-decoration: none;
+  display: block;
+  color: white;
+  font-family: 'SansationLight';
+  font-size: small;
+  padding: 0.5em 2em 0.5em 2em;
+  cursor: pointer;
+}
+
+.dropdown-content a:hover {
   background-color: #474c58;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #474c58;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }

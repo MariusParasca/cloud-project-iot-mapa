@@ -17,9 +17,18 @@ html(lang='en')
           .sensor-img-box
             img(src="/images/umidity.png", alt="Umidity")
         .sensor3
-          .sensor-name Proximity
+          #p-sensor-name Proximity - S1
           .sensor-img-box
             img(src="images/proximity.png", alt="Proximity")
+          .sensor-info
+          .dropdown
+            button(type="button").dropbtn 
+              .dropbtn-txt Sensors
+              i(class="fa fa-caret-down").dropbtn-img
+            .dropdown-content
+              a(onclick=`onclick_sensor1()`) Sensor1
+              a(onclick=`onclick_sensor2()`) Sensor2
+              a(onclick=`onclick_senzor3()`) Sensor3
         .sensor4
           .sensor-name Relay
           .sensor-img-box
