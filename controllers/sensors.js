@@ -37,6 +37,16 @@ function sendSensorsValues(user) {
 function renderSensorPage(user) {
   sensors = JSON.parse(user.dataValues["Sensors"]);
   console.log(sensors);
+  // var sensors = {
+  //   temperature: valueTemperature, 
+  //   umidity: valueUmidity,
+  //   proximity: {
+  //     sensor1: valueProximity1,
+  //     sensor2: valueProximity2,
+  //     sensor3: valueProximity3
+  //   }
+  // };
+  // res.render('sensors', { title: 'IOT Automation', sensors: sensors });
   this.res.render('sensors', { title: 'IOT Automation' });
 }
 

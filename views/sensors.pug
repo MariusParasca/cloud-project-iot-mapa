@@ -12,15 +12,20 @@ html(lang='en')
           .sensor-name Temperature
           .sensor-img-box
             img(src="/images/temperature.png", alt="Temperature")
+          .sensor-info
+            p #{sensors.temperature}
         .sensor2
           .sensor-name Umidity
           .sensor-img-box
             img(src="/images/umidity.png", alt="Umidity")
+          .sensor-info
+            p #{sensors.umidity}
         .sensor3
           #p-sensor-name Proximity - S1
           .sensor-img-box
             img(src="images/proximity.png", alt="Proximity")
           .sensor-info
+            p #{sensors.proximity.sensor1}
           .dropdown
             button(type="button").dropbtn 
               .dropbtn-txt Sensors

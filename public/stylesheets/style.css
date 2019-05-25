@@ -158,14 +158,20 @@ html {
   float: left;
 }
 
+img {
+  width: 4vw;
+  height: 4vw;
+}
+
 .sensor-info {
   width: 50%;
   float: right;
 }
 
-img {
-  width: 4vw;
-  height: 4vw;
+.sensor-info p {
+  color: white;
+  font-family: 'SansationLight';
+  font-size: large;
 }
 
 .log-out {
