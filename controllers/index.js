@@ -1,5 +1,15 @@
 const models = require('../models');
 const sha256 = require('sha256');
+const defaultSensorValues = `{
+  "temperature": "0",
+  "umidity": "0",
+  "proximity": {
+    "sensor1": "0",
+    "sensor2": "0",
+    "sensor3": "0"
+  }
+}`;
+
 
 function sendServerError(err) {
   this.res.status(500).send(err);
@@ -9,6 +19,7 @@ function createNewUser(req, res) {
   models.User.create({
     email: req.body.email,
     password: sha256(req.body.password),
+    Sensors: defaultSensorValues,
     keyid: req.body.key
   }).then(() => {
     res.redirect('/');
