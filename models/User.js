@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        Sensors: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         keyid: {
             type: DataTypes.INTEGER,
         }
