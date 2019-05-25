@@ -1,4 +1,5 @@
 const models = require('../models');
+const PROXIMITY = "proximity";
 
 exports.refreshSensors = function(req, res, next) {
   if (req.session.user) {
@@ -35,7 +36,6 @@ function sendSensorsValues(user) {
 
 function renderSensorPage(user) {
   sensors = JSON.parse(user.dataValues["Sensors"]);
-  // transformare in movementSensors
   console.log(sensors);
   this.res.render('sensors', { title: 'IOT Automation' });
 }
@@ -48,29 +48,17 @@ function updateSensorValuesInDB(actualValues, email) {
         email: email
       }
     }
-  ).then(result => console.log(result + "rows affected"));
-}
-
-function areSensorValueDifferent(actualValues, clientValues) {
-  if (Object.keys(actualValues).length > Object.keys(clientValues).length)
-    return true;
-  for (let [key, value] of Object.entries(clientValues)) {
-    if (value != actualValues[key]) {
-      return true;
-    }
-  }
-
-  return false;
+  ).then(result => console.log(result + " rows affected"));
 }
 
 function handleSendDataRequest(user) {
   var actualValues = this.req.body;
   var clientValues = JSON.parse(user.dataValues["Sensors"]);
 
-  if (areSensorValueDifferent(actualValues, clientValues)) {
+  //if (areSensorValueDifferent(actualValues, clientValues)) {
     updateSensorValuesInDB(actualValues, user.dataValues["email"]);
     //updateSensorValuesInView()
-  }
+  //}
 }
 
 exports.sendData = function(req, res, next) {
@@ -86,4 +74,35 @@ exports.sendData = function(req, res, next) {
   } else {
     res.status(400).send();
   }
+}
+
+
+function areSensorValueDifferent(actualValues, clientValues) {
+  if (Object.keys(actualValues).length > Object.keys(clientValues).length)
+    return true;
+  for (let [key, value] of Object.entries(clientValues)) {
+    if (typeof (value) == "obecjt") {
+      if (areSensorValueDifferent(value, actualValues[key]))
+        return true;
+    } else if (value != actualValues[key]) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function transformToDbObjectFormat(clientValues) {
+  var proximitySensors = {}
+  var result = {}
+  for (let [key, value] of Object.entries(clientValues)) {
+    if (key.startsWith("sensor")) {
+      proximitySensors[key] = value;
+    } else {
+      result[key] = value;
+    }
+  }
+
+  result[PROXIMITY] = proximitySensors;
+  return result;
 }

@@ -19,7 +19,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: process.env.SESSION_KEY || 'complicat12340', resave: false, saveUninitialized: true }))
+app.use(session({
+  secret: 'complicat12340',  resave: false, saveUninitialized: true, secure: true }))
 
 app.use('/', indexRouter);
 app.use('/', sensorsRouter);
