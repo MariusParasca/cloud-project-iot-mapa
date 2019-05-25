@@ -6,6 +6,7 @@ let sensors = require('../controllers/sensors');
 router.get('/sensors', sensors.index);
 router.get('/logout', sensors.logout)
 router.post('/senddata', sensors.sendData);
+router.get('/sensors/refresh', sensors.refreshSensors);
 
 module.exports = router;
 

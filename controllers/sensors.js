@@ -1,7 +1,19 @@
 const models = require('../models');
 
+exports.refreshSensors = function(req, res, next) {
+  if (req.session.user) {
+    models.User.findOne({
+      where: {
+        email: req.session.user,
+      }
+    }).then(sendSensorsValues.bind({ req: req, res: res }));
+  } else {
+    res.status(401).send();
+  }
+}
+
 exports.index = function(req, res, next) {
-  if (req.session.user)  {
+  if (req.session.user) {
     models.User.findOne({
       where: {
         email: req.session.user,
@@ -14,6 +26,11 @@ exports.index = function(req, res, next) {
 
 exports.logout = function(req, res, next) {
   res.status(200).send();
+}
+
+function sendSensorsValues(user) {
+  sensors = JSON.parse(user.dataValues["Sensors"]);
+  this.res.send(JSON.stringify(sensors));
 }
 
 function renderSensorPage(user) {
