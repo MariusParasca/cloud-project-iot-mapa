@@ -1,5 +1,25 @@
 const models = require('../models');
 
+exports.sendData = function (req, res, next) {
+  models.User.findOne({
+    where: {
+      keyid: req.header("Client-Key")
+    }
+  }).then(handleSendDataRequest.bind({ req: req, res: res }));
+}
+
+exports.updateSensorNames = function(req, res, next) {
+  if (req.session.user) {
+    models.User.findOne({
+      where: {
+        email: req.session.user,
+      }
+    }).then(modifySensorsObject.bind({ req: req, res: res }));
+  } else {
+    res.status(401).send();
+  }
+}
+
 exports.refreshSensors = function(req, res, next) {
   if (req.session.user) {
     models.User.findOne({
@@ -26,6 +46,12 @@ exports.index = function(req, res, next) {
 
 exports.logout = function(req, res, next) {
   res.status(200).send();
+}
+
+function modifySensorsObject(user) {
+  if(user) {
+    updateSensorValuesInDB(this.req.body, user.dataValues["email"]);
+  }
 }
 
 function sendSensorsValues(user) {
@@ -57,12 +83,4 @@ function handleSendDataRequest(user) {
   } else {
     this.res.status(400).send();
   }
-}
-
-exports.sendData = function(req, res, next) {
-    models.User.findOne({
-      where: {
-        keyid: req.header("Client-Key")
-      }
-    }).then(handleSendDataRequest.bind({ req: req, res: res }));
 }
