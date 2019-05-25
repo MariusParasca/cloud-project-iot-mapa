@@ -168,7 +168,7 @@ img {
   float: right;
 }
 
-.sensor-info p {
+.sensor-info p, #p {
   color: white;
   font-family: 'SansationLight';
   font-size: large;
