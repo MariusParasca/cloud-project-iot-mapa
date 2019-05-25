@@ -144,7 +144,16 @@ html {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.sensor-name, #p-sensor-name {
+.editbtn {
+  display: inline-block;
+  background: none;
+  border: none;
+  font-size: large;
+  cursor: pointer;
+}
+
+.sensor-name, #prox-sensor-name {
+  display:inline-block;
   color: white;
   font-family: 'SansationLight';
   font-weight: bold;
@@ -159,8 +168,8 @@ html {
 }
 
 img {
-  width: 4vw;
-  height: 4vw;
+  width: 70%;
+  height: auto;
 }
 
 .sensor-info {
@@ -180,14 +189,6 @@ img {
   text-align: center;
   color: white;
   font-family: 'Roboto';
-  bottom: 0;
-  margin-bottom: 1.75em;
-}
-
-.log-out {
-  position: absolute;
-  width: 100%;
-  text-align: center;
   bottom: 0;
   margin-bottom: 1.75em;
 }
@@ -215,7 +216,6 @@ img {
 }
 
 .dropbtn {
-  display: inline-flex;
   background-color: #565c69;
   color: white;
   padding: 0.5em 2em 0.5em 2em;
@@ -225,11 +225,13 @@ img {
 }
 
 .dropbtn-txt {
+  display: inline-block;
   font-family: 'SansationLight';
   font-size: small;
 }
 
 .dropbtn-img {
+  display: inline-block;
   margin-left: 1em;
 }
 

@@ -9,35 +9,48 @@ html(lang='en')
       .content-title IOT SENSORS
       .sensors-container
         .sensor1
-          .sensor-name Temperature
+          .bar
+            button(type="button" title="Edit Name").editbtn
+              i(class="fa fa-pencil-square-o")
+            .sensor-name Temperature
           .sensor-img-box
             img(src="/images/temperature.png", alt="Temperature")
           .sensor-info
-            p #{sensors.temperature}
+            p #{sensors.temperature} ℃
+
         .sensor2
-          .sensor-name Umidity
+          .bar
+            button(type="button" title="Edit Name").editbtn
+              i(class="fa fa-pencil-square-o")
+            .sensor-name Umidity
           .sensor-img-box
             img(src="/images/umidity.png", alt="Umidity")
           .sensor-info
-            p #{sensors.umidity}
+            p #{sensors.umidity} %
+
         .sensor3
-          #p-sensor-name Proximity - S1
+          .bar
+            button(type="button" title="Edit Name").editbtn
+              i(class="fa fa-pencil-square-o")
+            #prox-sensor-name Proximity - S1
           .sensor-img-box
             img(src="images/proximity.png", alt="Proximity")
           .sensor-info
-            p #{sensors.proximity.sensor1}
+            p#prox #{sensors.proximity.sensor1} m
           .dropdown
             button(type="button").dropbtn 
               .dropbtn-txt Sensors
               i(class="fa fa-caret-down").dropbtn-img
             .dropdown-content
-              a(onclick=`onclick_sensor1()`) Sensor1
-              a(onclick=`onclick_sensor2()`) Sensor2
-              a(onclick=`onclick_senzor3()`) Sensor3
-        .sensor4
-          .sensor-name Relay
-          .sensor-img-box
-            img(src="/images/relay.png", alt="Relay")
+              a(onclick='onclick_sensor(1, '+ sensors.proximity.sensor1 +')') Sensor1
+              a(onclick='onclick_sensor(2, '+ sensors.proximity.sensor2 +')') Sensor2
+              a(onclick='onclick_sensor(3, '+ sensors.proximity.sensor3 +')') Sensor3
+        
+        //- .sensor4
+        //-   .sensor-name Relay
+        //-   .sensor-img-box
+        //-     img(src="/images/relay.png", alt="Relay")
+
       .log-out
         a(onclick=`onclick_logout()`) Logout
     include common/footer.pug

@@ -3,14 +3,7 @@ function onclick_logout() {
     window.location.replace("/logout");
 }
 
-function onclick_sensor1() {
-    document.getElementById("p-sensor-name").innerHTML = "Proximity - S1"
-}
-
-function onclick_sensor2() {
-    document.getElementById("p-sensor-name").innerHTML = "Proximity - S2"
-}
-
-function onclick_senzor3() {
-    document.getElementById("p-sensor-name").innerHTML = "Proximity - S3"
+function onclick_sensor(number, sensor) {
+    document.getElementById('prox-sensor-name').innerHTML = 'Proximity - S' + number;
+    document.getElementById('prox').innerHTML = sensor + ' m';
 }
