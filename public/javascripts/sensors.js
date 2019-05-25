@@ -4,6 +4,6 @@ function onclick_logout() {
 }
 
 function onclick_sensor(number, sensor) {
-    document.getElementById('p-sensor-name').innerHTML = 'Proximity - S' + number;
-    document.getElementById('p').innerHTML = sensor;
+    document.getElementById('prox-sensor-name').innerHTML = 'Proximity - S' + number;
+    document.getElementById('prox').innerHTML = sensor + ' m';
 }
