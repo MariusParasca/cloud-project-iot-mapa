@@ -4,13 +4,13 @@ html(lang='en')
   +head(title)
   body
     link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
     .content
       .content-title IOT SENSORS
       .sensors-container
         .sensor1
           .bar
-            button(type="button" title="Edit Name").editbtn
+            button(type="button", title="Edit Name", onclick='onclick_modal()').editbtn
               i(class="fa fa-pencil-square-o")
             .sensor-name Temperature
           .sensor-img-box
@@ -20,7 +20,7 @@ html(lang='en')
 
         .sensor2
           .bar
-            button(type="button" title="Edit Name").editbtn
+            button(type="button", title="Edit Name", onclick='onclick_modal()').editbtn
               i(class="fa fa-pencil-square-o")
             .sensor-name Umidity
           .sensor-img-box
@@ -30,13 +30,13 @@ html(lang='en')
 
         .sensor3
           .bar
-            button(type="button" title="Edit Name").editbtn
+            button(type="button", title="Edit Name", onclick='onclick_modal()').editbtn
               i(class="fa fa-pencil-square-o")
             #prox-sensor-name Proximity - S1
           .sensor-img-box
             img(src="images/proximity.png", alt="Proximity")
           .sensor-info
-            p#prox #{sensors.proximity.sensor1} m
+            p#prox #{sensors.proximity.sensor1}
           .dropdown
             button(type="button").dropbtn 
               .dropbtn-txt Sensors
@@ -53,6 +53,16 @@ html(lang='en')
 
       .log-out
         a(onclick=`onclick_logout()`) Logout
+    
+    .modal-bg
+      .modal-container
+        .modal-title Set Sensor Name
+        form(action="/", onsubmit="return false", method='POST').modal-form
+        input(type="text", placeholder="New Name").modal-label
+        .modalbtn
+          input(type="submit", value="Submit").modal-submit 
+          input(type="button", onclick="onclick_modal_close()" value="Close").modal-close
+
     include common/footer.pug
     script(src="/javascripts/sensors.js")
     +footer('')

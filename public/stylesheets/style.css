@@ -14,6 +14,10 @@ html {
   left: 0;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
 
 .content {
   position: relative;
@@ -66,14 +70,16 @@ html {
   margin-left: 10%;
 }
 
-.form-label:focus {
+.form-label:focus,
+.modal-label:focus {
   outline: rgb(91, 192, 113);
   border: 0 solid rgb(91, 192, 113);
   border-bottom: 1px solid #CCC;
   color: white;
 }
 
-.content form input::placeholder {
+.content form input::placeholder,
+.modal-container form input::placeholder {
   color: white;
   opacity: 0.7;
 }
@@ -265,4 +271,84 @@ img {
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+/* Modal for editing sensor name */
+.modal-bg {
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+}
+
+.modal-container {
+  position: relative;
+  width: 22.5em;
+  height: 10em;
+  margin-top: 10em;
+  background-color: #565c69;
+  border: 1px solid rgb(123, 122, 139);
+}
+
+.modal-title {
+  color:white;
+  font-family: 'SansationLight';
+  font-size: 1.25em;
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
+.modal-label {
+  width: 80%;
+  height: 0.8em;
+  margin-top: 5%;
+  margin-left: 1em;
+  font-size: 1.25em;
+  font-family: 'SansationLight';
+  color: white;
+  background: rgba(0,0,0,0);
+  border: none;
+  border: 0px solid white;
+  border-bottom: 1px solid #CCC;
+}
+
+.modalbtn {
+  text-align: right; 
+  margin-top: 1.5em;
+  margin-right: 1em;
+}
+
+.modal-submit {
+  display:inline-block;
+  color: white;
+  background-color: #333333;
+  font-size: 0.9em;
+  font-family: 'Roboto';
+  padding: 0.5em 1.5em 0.5em 1.5em;
+  border: 0px;
+  border-radius: 5px;  
+  cursor: pointer;
+}
+
+.modal-close {
+  display:inline-block;
+  margin-left: 0.5em;
+  color: #333333;
+  background-color: white;
+  font-size: 0.9em;
+  font-family: 'Roboto';
+  font-weight: bold;
+  padding: 0.5em 1.5em 0.5em 1.5em;
+  border: 0px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-submit:focus, .modal-close:focus {
+  outline: 0px solid;
 }
