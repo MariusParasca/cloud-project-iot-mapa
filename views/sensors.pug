@@ -58,10 +58,10 @@ html(lang='en')
       .modal-container
         .modal-title Set Sensor Name
         form(action="/", onsubmit="return false", method='POST').modal-form
-        input(type="text", placeholder="New Name").modal-label
+        input(name="name", type="text", placeholder="New Name").modal-label
         .modalbtn
-          input(type="submit", value="Submit").modal-submit 
-          input(type="button", onclick="onclick_modal_close()" value="Close").modal-close
+          input(type="submit", onclick="perform_name_change()", value="Submit").modal-submit 
+          input(type="button", onclick="onclick_modal_close()", value="Close").modal-close
 
     include common/footer.pug
     script(src="/javascripts/sensors.js")

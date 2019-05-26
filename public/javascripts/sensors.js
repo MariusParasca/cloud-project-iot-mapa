@@ -6,8 +6,14 @@ function onclick_sensor(number, sensorValue) {
 
 function onclick_modal() {
     document.querySelector('.modal-bg').style.display = 'flex';
+}
 
 function onclick_modal_close() {
+    document.querySelector('.modal-bg').style.display = 'none';
+}
+
+function perform_name_change() {
+    var newName = $('input[name="name"]').val();
     document.querySelector('.modal-bg').style.display = 'none';
 }
 
