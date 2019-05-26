@@ -1,4 +1,8 @@
 const models = require('../models');
+const TEMPERATURE = "temperature";
+const UMIDITY = "umidity";
+const PROXIMITY = "proximity";
+const SENSOR = "sensor";
 
 exports.sendData = function (req, res, next) {
   models.User.findOne({
@@ -10,6 +14,7 @@ exports.sendData = function (req, res, next) {
 
 exports.updateSensorNames = function(req, res, next) {
   if (req.session.user) {
+    console.log("updateSensorNames" + req.session.user);
     models.User.findOne({
       where: {
         email: req.session.user,
@@ -50,7 +55,9 @@ exports.logout = function(req, res, next) {
 
 function modifySensorsObject(user) {
   if(user) {
-    updateSensorValuesInDB(this.req.body, user.dataValues["email"]);
+    updateSensorValuesInDB(this.req.body, user.dataValues["email"], this.res);
+  } else {
+    this.res.status(400).send();
   }
 }
 
@@ -61,10 +68,11 @@ function sendSensorsValues(user) {
 
 function renderSensorPage(user) {
   sensors = JSON.parse(user.dataValues["Sensors"]);
+  console.log(sensors);
   this.res.render('sensors', { title: 'IOT Automation', sensors: sensors });
 }
 
-function updateSensorValuesInDB(actualValues, email) {
+function updateSensorValuesInDB(actualValues, email, res) {
   models.User.update(
     { Sensors: JSON.stringify(actualValues) },
     {
@@ -72,15 +80,46 @@ function updateSensorValuesInDB(actualValues, email) {
         email: email
       }
     }
-  ).then(result => console.log(result + " rows affected"));
+  ).then(result => {
+    console.log(result + " rows affected");
+    res.status(200).send();
+  });
 }
 
 function handleSendDataRequest(user) {
   if(user) {
     var actualValues = this.req.body;
-    updateSensorValuesInDB(actualValues, user.dataValues["email"]);
-    this.res.status(200).send();
+    var sensorValuesToUpdate = transformToDbNames(actualValues, JSON.parse(user.dataValues["Sensors"]));
+    updateSensorValuesInDB(sensorValuesToUpdate, user.dataValues["email"], this.res);
   } else {
     this.res.status(400).send();
   }
+}
+
+function getProximityActualValues(actualProximity, clientProximity) {
+  var proximity = {};
+  var count = 1;
+  for (let [key2, value2] of Object.entries(clientProximity)) {
+    var sensorName = `${SENSOR}${count}`;
+    if (key2.startsWith(sensorName)) {
+      console.log(sensorName, actualProximity[sensorName]);
+      proximity[key2] = actualProximity[sensorName];
+      count += 1;
+    }
+  }
+  return proximity;
+}
+
+function transformToDbNames(actualValues, clientValues) {
+  var result = {}
+  for (let [key, value] of Object.entries(clientValues)) {
+    if(key.startsWith(TEMPERATURE))
+      result[key] = actualValues[TEMPERATURE];
+    else if (key.startsWith(UMIDITY))
+      result[key] = actualValues[UMIDITY];
+    else if (key.startsWith(PROXIMITY)) {
+      result[key] = getProximityActualValues(actualValues[PROXIMITY], clientValues[key]);
+    }
+  }
+  return result;
 }

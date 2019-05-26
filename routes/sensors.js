@@ -7,7 +7,7 @@ router.get('/sensors', sensors.index);
 router.get('/logout', sensors.logout)
 router.post('/senddata', sensors.sendData);
 router.get('/sensors/refresh', sensors.refreshSensors);
-router.get('/sensors/updateSensorNames', sensors.updateSensorNames);
+router.post('/sensors/updateSensorNames', sensors.updateSensorNames);
 
 module.exports = router;
 
