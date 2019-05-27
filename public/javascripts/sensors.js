@@ -60,9 +60,7 @@ var result = displaySensors()
 function onclickSensorProx(number) {
     var proxObj = result[Object.keys(result)[2]];
     var proxName = Object.keys(proxObj)[number -1];
-    console.log(proxName);
     var proxValue = proxObj[proxName];
-    console.log(proxValue);
     var value = proxValue == 1 ? 'True' : 'False';
     document.getElementById('prox-sensor-name').innerHTML = proxName;
     document.getElementById('prox').innerHTML = value;
