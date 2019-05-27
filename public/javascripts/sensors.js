@@ -2,6 +2,10 @@ const TEMPERATURE = "temperature";
 const UMIDITY = "umidity";
 const PROXIMITY = "proximity";
 const SENSOR = "sensor";
+const DEF_TEMPERATURE = "Temperature";
+const DEF_UMIDITY = "Umidity";
+const DEF_PROXIMITY = "Proximity";
+const DEF_SENSOR = "Proximity - S";
 var sensorNameId;
 
 function onclickModal(id) {
@@ -23,6 +27,9 @@ function displayProximity(proximityKey) {
       var sensorName = `${SENSOR}${count}`;
       if (key.startsWith(sensorName)) {
         var newKey = key.split('_')[1];
+        if(newKey === undefined) {
+            newKey = DEF_SENSOR + `${count}`;
+        }
         proximity[newKey] = value;
         count += 1;
       }
@@ -35,18 +42,27 @@ function displaySensors() {
     for(let [key, value] of Object.entries(sensors)) {
         if(key.startsWith(TEMPERATURE)) {
             var newKey = key.split('_')[1];
+            if(newKey === undefined) {
+                newKey = DEF_TEMPERATURE;
+            }
             document.getElementById('t-sensor-name').innerHTML = newKey;
             document.getElementById('t-value').innerHTML = value;
             result[newKey] = value;
         }
         else if(key.startsWith(UMIDITY)) {
             var newKey = key.split('_')[1];
+            if(newKey === undefined) {
+                newKey = DEF_UMIDITY;
+            }
             document.getElementById('u-sensor-name').innerHTML = newKey;
             document.getElementById('u-value').innerHTML = value;
             result[newKey] = value;
         }
         else if(key.startsWith(PROXIMITY)) {
             var newKey = key.split('_')[1];
+            if(newKey === undefined) {
+                newKey = DEF_PROXIMITY;
+            }
             document.getElementById('prox-sensor-name').innerHTML = newKey;
             result[newKey] = displayProximity(sensors[key]);
         }
@@ -59,7 +75,7 @@ var result = displaySensors()
 
 function onclickSensorProx(number) {
     var proxObj = result[Object.keys(result)[2]];
-    var proxName = Object.keys(proxObj)[number -1];
+    var proxName = Object.keys(proxObj)[number - 1];
     var proxValue = proxObj[proxName];
     var value = proxValue == 1 ? 'True' : 'False';
     document.getElementById('prox-sensor-name').innerHTML = proxName;
