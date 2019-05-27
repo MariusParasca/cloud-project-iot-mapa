@@ -47,19 +47,14 @@ html(lang='en')
               a(onclick='onclickSensorProx(1)') Sensor1
               a(onclick='onclickSensorProx(2)') Sensor2
               a(onclick='onclickSensorProx(3)') Sensor3
-
-        //- .sensor4
-        //-   .sensor-name Relay
-        //-   .sensor-img-box
-        //-     img(src="/images/relay.png", alt="Relay")
-
+              
       .log-out
         a(onclick=`onclickLogout()`) Logout
 
     .modal-bg
       .modal-container
         .modal-title Set Sensor Name
-        form(action="/", onsubmit="return false", method='POST').modal-form
+        form(action="/", onsubmit="return false", method="POST").modal-form
           input(name="name", id="name", type="text", placeholder="New Name").modal-label
           .modalbtn
             input(type="submit", onclick="performNameChange()", value="Submit").modal-submit 
