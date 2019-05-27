@@ -6,33 +6,35 @@ html(lang='en')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
     .content
-      .content-title IOT SENSORS
+      .content-title IOT SENSORS 
       .sensors-container
         .sensor1
           .bar
-            button(type="button", title="Edit Name", onclick='onclick_modal()').editbtn
+            button(type="button", title="Edit Name", onclick="onclickModal('t-sensor-name')").editbtn            
               i(class="fa fa-pencil-square-o")
-            .sensor-name Temperature
+            #t-sensor-name
           .sensor-img-box
             img(src="/images/temperature.png", alt="Temperature")
           .sensor-info
-            p #{sensors.temperature} ℃
+            p#t-value 
+            .symbol ℃
 
         .sensor2
           .bar
-            button(type="button", title="Edit Name", onclick='onclick_modal()').editbtn
+            button(type="button", title="Edit Name", onclick="onclickModal('u-sensor-name')").editbtn
               i(class="fa fa-pencil-square-o")
-            .sensor-name Umidity
+            #u-sensor-name
           .sensor-img-box
             img(src="/images/umidity.png", alt="Umidity")
           .sensor-info
-            p #{sensors.umidity} %
+            p#u-value
+            .symbol %
 
         .sensor3
           .bar
-            button(type="button", title="Edit Name", onclick='onclick_modal()').editbtn
+            button(type="button" title="Edit Name", onclick="onclickModal('prox-sensor-name')").editbtn
               i(class="fa fa-pencil-square-o")
-            #prox-sensor-name Proximity
+            #prox-sensor-name
           .sensor-img-box
             img(src="images/proximity.png", alt="Proximity")
           .sensor-info
@@ -42,27 +44,29 @@ html(lang='en')
               .dropbtn-txt Sensors
               i(class="fa fa-caret-down").dropbtn-img
             .dropdown-content
-              a(onclick='onclick_sensor(1, '+ sensors.proximity.sensor1 +')') Sensor1
-              a(onclick='onclick_sensor(2, '+ sensors.proximity.sensor2 +')') Sensor2
-              a(onclick='onclick_sensor(3, '+ sensors.proximity.sensor3 +')') Sensor3
-        
+              a(onclick='onclickSensorProx(1)') Sensor1
+              a(onclick='onclickSensorProx(2)') Sensor2
+              a(onclick='onclickSensorProx(3)') Sensor3
+
         //- .sensor4
         //-   .sensor-name Relay
         //-   .sensor-img-box
         //-     img(src="/images/relay.png", alt="Relay")
 
       .log-out
-        a(onclick=`onclick_logout()`) Logout
-    
+        a(onclick=`onclickLogout()`) Logout
+
     .modal-bg
       .modal-container
         .modal-title Set Sensor Name
         form(action="/", onsubmit="return false", method='POST').modal-form
-        input(name="name", type="text", placeholder="New Name").modal-label
-        .modalbtn
-          input(type="submit", onclick="perform_name_change()", value="Submit").modal-submit 
-          input(type="button", onclick="onclick_modal_close()", value="Close").modal-close
+          input(name="name", id="name", type="text", placeholder="New Name").modal-label
+          .modalbtn
+            input(type="submit", onclick="performNameChange()", value="Submit").modal-submit 
+            input(type="button", onclick="onclickModalClose()", value="Close").modal-close
 
     include common/footer.pug
-    script(src="/javascripts/sensors.js")
+    script(type='text/javascript').
+      var sensors = !{JSON.stringify(sensors)}; 
+    script(src='javascripts/sensors.js')
     +footer('')
