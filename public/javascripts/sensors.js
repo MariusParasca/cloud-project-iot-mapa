@@ -135,6 +135,10 @@ function modifyProxObject(index, defName, newName) {
     sensors[proxKey] = proxObj;
 }
 
+function onclickRefresh() {
+    console.log("am dat click pe refresh");
+}
+
 function onclickLogout() {
     console.log("am dat click pe logout");
     window.location.replace("/logout");

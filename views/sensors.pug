@@ -48,8 +48,9 @@ html(lang='en')
               a(onclick='onclickSensorProx(2)') Sensor2
               a(onclick='onclickSensorProx(3)') Sensor3
               
-      .log-out
-        a(onclick=`onclickLogout()`) Logout
+      .bottombtns
+        a(onclick=`onclickRefresh()`).refresh Refresh
+        a(onclick=`onclickLogout()`).log-out Logout
 
     .modal-bg
       .modal-container

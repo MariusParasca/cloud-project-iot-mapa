@@ -207,16 +207,32 @@ img {
   margin-bottom: 1.75em;
 }
 
-.log-out a {
+.bottombtns {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   text-decoration: none;
-  color: white;
+  color:white;
   font-family: 'SansationLight';
-  font-size: 0.8em;
+  font-size: 0.85em;
   font-style: italic;
+  margin-bottom: 2.5em;
   cursor: pointer;
 }
 
-.log-out a:hover {
+.refresh {
+  position: absolute;
+  left: 0;
+  margin-left: 4em;
+}
+
+.log-out {
+  position: absolute;
+  right: 0;
+  margin-right: 4em;
+}
+
+.refresh:hover, .log-out:hover {
   text-decoration: underline;
 }
 
