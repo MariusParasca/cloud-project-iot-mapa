@@ -11,6 +11,7 @@ const ID_UMIDITY = 'u';
 const ID_PROXIMITY = 'prox';
 var sensorNameId;
 var proxNumber;
+var result;
 
 function onclickModal(id) {
     sensorNameId = id;
@@ -23,9 +24,9 @@ function onclickModalClose() {
     document.querySelector('.modal-bg').style.display = 'none';
 }
 
-function displaySensors() {
+function displaySensors(sens) {
     var result = {};
-    for(let [key, value] of Object.entries(sensors)) {
+    for(let [key, value] of Object.entries(sens)) {
         if(key.startsWith(TEMPERATURE)) {
             var newKey = key.split('_')[1];
             if(newKey === undefined) {
@@ -50,7 +51,7 @@ function displaySensors() {
                 newKey = DEF_PROXIMITY;
             }
             document.getElementById('prox-sensor-name').innerHTML = newKey;
-            result[newKey] = displayProximity(sensors[key]);
+            result[newKey] = displayProximity(sens[key]);
         }
     }
     return result;
@@ -73,7 +74,7 @@ function displayProximity(proximityKey) {
     return proximity;
 }
 
-var result = displaySensors()
+result = displaySensors(sensors);
 // console.log(result);
 
 function onclickSensorProx(number) {
@@ -118,6 +119,7 @@ function performNameChange() {
     }
     http.send(JSON.stringify(sensors));
     onclickModalClose();
+    window.location.replace('/sensors');
 }
 
 function modifyObject(index, defName, newName) {
@@ -137,6 +139,16 @@ function modifyProxObject(index, defName, newName) {
 
 function onclickRefresh() {
     console.log("am dat click pe refresh");
+    var http = new XMLHttpRequest();
+    var updatedSensors;
+    http.onreadystatechange = function() {
+        if(http.readyState == 4 && http.status == 200 ){
+            updatedSensors = JSON.parse(http.responseText); 
+        }
+    }
+    http.open('GET', '/sensors/refresh', true);
+    http.send();
+    result = displaySensors(updatedSensors);
 }
 
 function onclickLogout() {
