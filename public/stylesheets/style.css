@@ -198,15 +198,6 @@ img {
   margin-left: 0.25em;
 }
 
-.log-out {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  font-family: 'Roboto';
-  margin-bottom: 1.75em;
-}
-
 .bottombtns {
   position: absolute;
   bottom: 0;
