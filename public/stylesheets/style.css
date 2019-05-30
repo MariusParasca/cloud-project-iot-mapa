@@ -150,6 +150,10 @@ body {
   grid-template-columns: repeat(2, 1fr);
 }
 
+.sensor3 {
+  text-align: center;
+}
+
 .editbtn {
   display: inline-block;
   background: none;
@@ -172,9 +176,28 @@ body {
   margin-bottom: 0.5em;
 }
 
+#prox-sensor-name {
+  margin-top: 1em;
+}
+
 .sensor-img-box {
   width: 50%;
   float: left;
+}
+
+.sensor3-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prox-sensor-img-box {
+  display: inline-block;
+  width: 5.5em;
+}
+
+.prox-sensor-info {
+  display: inline-block;
 }
 
 img {
@@ -187,7 +210,7 @@ img {
   float: right;
 }
 
-.sensor-info p, .symbol {
+.sensor-info p, .prox-sensor-info, .symbol {
   display: inline-block;
   color: white;
   font-family: 'SansationLight';

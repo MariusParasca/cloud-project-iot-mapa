@@ -30,23 +30,24 @@ html(lang='en')
             p#u-value
             .symbol %
 
-        .sensor3
-          .bar
-            button(type="button" title="Edit Name", onclick="onclickModal('prox-sensor-name')").editbtn
-              i(class="fa fa-pencil-square-o")
-            #prox-sensor-name
-          .sensor-img-box
+      .sensor3
+        .bar
+          button(type="button" title="Edit Name", onclick="onclickModal('prox-sensor-name')").editbtn
+            i(class="fa fa-pencil-square-o")
+          #prox-sensor-name
+        .sensor3-display
+          .prox-sensor-img-box
             img(src="images/proximity.png", alt="Proximity")
-          .sensor-info
+          .prox-sensor-info
             p#prox
-          .dropdown
-            button(type="button").dropbtn 
-              .dropbtn-txt Sensors
-              i(class="fa fa-caret-down").dropbtn-img
-            .dropdown-content
-              a(onclick='onclickSensorProx(1)') Sensor1
-              a(onclick='onclickSensorProx(2)') Sensor2
-              a(onclick='onclickSensorProx(3)') Sensor3
+        .dropdown
+          button(type="button").dropbtn 
+            .dropbtn-txt Sensors
+            i(class="fa fa-caret-down").dropbtn-img
+          .dropdown-content
+            a(onclick='onclickSensorProx(1)') Sensor1
+            a(onclick='onclickSensorProx(2)') Sensor2
+            a(onclick='onclickSensorProx(3)') Sensor3
               
       .bottombtns
         a(onclick=`onclickRefresh()`).refresh Refresh
