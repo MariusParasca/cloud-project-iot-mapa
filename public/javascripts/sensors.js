@@ -144,11 +144,11 @@ function onclickRefresh() {
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200 ){
             updatedSensors = JSON.parse(http.responseText); 
+            displaySensors(updatedSensors);
         }
     }
     http.open('GET', '/sensors/refresh', true);
     http.send();
-    result = displaySensors(updatedSensors);
 }
 
 function onclickLogout() {
